@@ -3,7 +3,7 @@ source('MTComb_L21.R')
 
 #load data
 load('simulated_data.rda')
-
+ss
 #z-score normalization
 #Y[1:10] <- lapply(Y[1:10],
 #                  function(x) scale(x, center = TRUE, scale = TRUE))
