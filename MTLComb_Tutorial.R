@@ -4,16 +4,6 @@ source('MTComb_L21.R')
 #load data
 load('simulated_data.rda')
 
-#z-score normalization
-#Y[1:10] <- lapply(Y[1:10],
-#                  function(x) scale(x, center = TRUE, scale = TRUE))
-#tY[1:10] <- lapply(tY[1:10],
-#                  function(x) scale(x, center = TRUE, scale = TRUE))
-#X <- lapply(X, function(x)
-#    apply(x, 2, function(xx) scale(xx, center = TRUE, scale = TRUE)))
-#tX <- lapply(tX, function(x)
-#    apply(x, 2, function(xx) scale(xx, center = TRUE, scale = TRUE)))
-
 #parameters
 str(Y)
 opts <- list(init=0, tol=10^-6, maxIter=10000, ter=2)
