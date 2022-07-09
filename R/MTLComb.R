@@ -2,7 +2,8 @@
 ################################################################################
 #
 # Package Name: MTLComb
-# Description: multi-task learning combining calssification and regressin tasks with joint feature selection
+# Description: multi-task learning combining calssification and regressin tasks 
+# with joint feature selection
 #
 # Copyright (C) 2022  Dr. Han Cao (hank9cao@gmail.com)
 # All rights reserved.
