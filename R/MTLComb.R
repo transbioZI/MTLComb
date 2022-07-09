@@ -1,7 +1,49 @@
 
-#' The solver of MTLComb 
+################################################################################
+#
+# Package Name: MTLComb
+# Description: multi-task learning combining calssification and regressin tasks with joint feature selection
+#
+# Copyright (C) 2022  Dr. Han Cao (hank9cao@gmail.com)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
+################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################
+#' @title The solver of MTLComb 
 #'
-#' Solver the objective of MTLComb
+#' @description Solve the objective of MTLComb
 #' 
 #' @param X A set of feature matrices (the mixed tasks with classification and regression types)
 #' @param Y A set of responses, could be binary (classification problem) or continues (regression problem). The valid
@@ -14,7 +56,10 @@
 #'   maximized number of iterations and the termination rule using this parameter. For example 
 #'   \code{list(init=0,  tol=10^-3, maxIter=1000, ter=2)} 
 #' @return The coefficients of the model and the historical objective values
+#' 
 #' @export
+#' @author Dr. Han Cao
+################################################################################
 solve_L21 <- function (X, Y, lam, C, ctasks,opts){
   proximal_l21 <- function (W, lambda ){
     Fnorm <- sqrt(rowSums(W^2))
@@ -173,9 +218,20 @@ solve_L21 <- function (X, Y, lam, C, ctasks,opts){
 
 
 
-#' Regularization path estimation 
+
+
+
+
+
+
+
+
+
+
+################################################################################
+#' @title Regularization path estimation 
 #'
-#' Train a series of MTLComb models indexed by a sequence of lambda
+#' @description Train a series of MTLComb models indexed by a sequence of lambda
 #' 
 #' @param X A set of feature matrices (the mixed tasks with classification and regression types)
 #' @param Y A set of responses, could be binary (classification problem) or continues (regression problem). The valid
@@ -192,7 +248,10 @@ solve_L21 <- function (X, Y, lam, C, ctasks,opts){
 #'   maximized number of iterations and the termination rule using this parameter. The default value is 
 #'   \code{list(init=0,  tol=10^-2, maxIter=100, ter=2)} 
 #' @return The regularization path
+#' 
 #' @export
+#' @author Dr. Han Cao
+################################################################################
 MTLComb_Train = function(X=NULL, Y=NULL, nlambda=10, lam_ratio=0.01, lambda=NULL, C=0, ctasks=NULL, intercept=F, 
                         opts=list(init=0, maxIter=20, tol=0.01, ter=2)){
   #intercept model
@@ -243,14 +302,25 @@ MTLComb_Train = function(X=NULL, Y=NULL, nlambda=10, lam_ratio=0.01, lambda=NULL
 
 
 
-#' Get the data splits for CV 
+
+
+
+
+
+
+
+################################################################################
+#' @title Get the data splits for CV 
 #'
-#' The subjects of each task will be randomly divided into k folds
+#' @description The subjects of each task will be randomly divided into k folds
 #' 
 #' @param Y A set of responses, could be binary (classification problem) or continues (regression problem). The valid
 #'   value of binary outcome \eqn{\in\{1, -1\}}
 #' @param cv_fold The number of folds for CV
 #' @return The data splits of all folds
+#' 
+#' @author Dr. Han Cao
+################################################################################
 getCVPartition <- function(Y, cv_fold){
   task_num = length(Y);
   randIdx <- lapply(Y, function(x) sample(1:length(x), length(x), replace = FALSE))   
@@ -277,10 +347,10 @@ getCVPartition <- function(Y, cv_fold){
 
 
 
-
-#' k-fold CV
+################################################################################
+#' @title k-fold CV
 #'
-#' Split the subjects of each task into k folds, training a MTLComb model on k-1 folds of data and test on the holding out fold. 
+#' @description Split the subjects of each task into k folds, training a MTLComb model on k-1 folds of data and test on the holding out fold. 
 #' Repeat this procedure over all folds
 #' 
 #' @param X A set of feature matrices (the mixed tasks with classification and regression types)
@@ -299,7 +369,10 @@ getCVPartition <- function(Y, cv_fold){
 #'   maximized number of iterations and the termination rule using this parameter. The default value is 
 #'   \code{list(init=0,  tol=10^-4, maxIter=50, ter=2)} 
 #' @return The CV results
+#' 
 #' @export
+#' @author Dr. Han Cao
+################################################################################
 MTLComb_CV = function(X=NULL, Y=NULL, nfolds=10, lam_ratio=0.01, nlambda=10, lambda=NULL, ctasks=NULL, intercept=F, 
                              opts=list(init=0, maxIter=50, tol=0.001, ter=2), C=0){
   library("pROC")
@@ -352,12 +425,24 @@ MTLComb_CV = function(X=NULL, Y=NULL, nfolds=10, lam_ratio=0.01, nlambda=10, lam
 
 
 
-#' Plot the CV result
+
+
+
+
+
+
+
+
+################################################################################
+#' @title Plot the CV result
 #'
-#' Plot the CV result for both regression and clasification tasks
+#' @description Plot the CV result for both regression and clasification tasks
 #' 
 #' @param cvResult The result from calling the function \code{MTLComb_CV}
+#' 
 #' @export
+#' @author Dr. Han Cao
+################################################################################
 plot_MTLComb_CV = function(cvResult){
   par(mfrow=c(1,2))
   plot(colMeans(cvResult$auc_fold), main="auc of classification tasks", xlab="lambda index", ylab="auc")
@@ -366,16 +451,32 @@ plot_MTLComb_CV = function(cvResult){
 }
 
 
-#' Prediction with MTLComb model
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################
+#' @title Prediction with MTLComb model
 #'
-#' All regression or classification models would be predicted in the single targeting dataset. The prediction scores 
+#' @description All regression or classification models would be predicted in the single targeting dataset. The prediction scores 
 #' of all models are returned
 #' 
 #' @param fit A MTLComb model
 #' @param newx A new feature matrix
 #' @param type True/False indicator to show whether the new dataset is regression or classification
 #' @return The prediction scores of all tasks of \code{type} tasks
+#' 
 #' @export
+#' @author Dr. Han Cao
+################################################################################
 predict_MTLComb=function(fit, newx, type){
   ntasks=ncol(fit$ws[[1]])
   rtasks=setdiff(1:ntasks, fit$ctasks)
