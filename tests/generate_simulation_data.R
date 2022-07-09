@@ -1,39 +1,4 @@
 
-################################################################################
-#
-# Package Name: MTLComb
-# Description: multi-task learning combining calssification and regressin tasks with joint feature selection
-#
-# Copyright (C) 2022  Dr. Han Cao (hank9cao@gmail.com)
-# All rights reserved.
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
-################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ################################################################################
@@ -52,9 +17,6 @@ for(i in 1:t){
   tY[[i]] <- sign(tX[[i]] %*% W[, i] + rnorm(n) * 0.5) #test data
 }
 cX <- X; cY <- Y; cW <- W; ctX <- tX; ctY <- tY;
-
-
-
 
 ################################################################################
 #generate regression tasks
@@ -75,5 +37,3 @@ for(i in 1:t){
 X <- c(X,cX); Y <- c(Y,cY); W <- cbind(W,cW);
 tX <- c(tX, ctX); tY <- c(tY, ctY)
 ctasks <- 11:20
-
-save(file='simulated_data.rda', X,Y,tX,tY,W,ctasks)
