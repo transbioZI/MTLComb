@@ -14,19 +14,7 @@ MTLComb_CV(
   ctasks = NULL,
   intercept = F,
   opts = list(init = 0, maxIter = 50, tol = 0.001, ter = 2),
-  C = 0
-)
-
-MTLComb_CV(
-  X = NULL,
-  Y = NULL,
-  nfolds = 10,
-  lam_ratio = 0.01,
-  nlambda = 10,
-  lambda = NULL,
-  ctasks = NULL,
-  intercept = F,
-  opts = list(init = 0, maxIter = 50, tol = 0.001, ter = 2),
+  C2 = 0,
   C = 0
 )
 }
@@ -54,19 +42,14 @@ are classification}
 maximized number of iterations and the termination rule using this parameter. The default value is 
 \code{list(init=0,  tol=10^-4, maxIter=50, ter=2)}}
 
-\item{C}{A non-negative constant to improve the generalization performance. The default value is 0}
-
 \item{C2}{A non-negative constant to improve the generalization performance. The default value is 0}
+
+\item{C}{A non-negative constant to promote the selection of same signatures}
 }
 \value{
 The CV results
-
-The CV results
 }
 \description{
-Split the subjects of each task into k folds, training a MTLComb model on k-1 folds of data and test on the holding out fold. 
-Repeat this procedure over all folds
-
 Split the subjects of each task into k folds, training a MTLComb model on k-1 folds of data and test on the holding out fold. 
 Repeat this procedure over all folds
 }
