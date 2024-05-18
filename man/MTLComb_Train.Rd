@@ -11,6 +11,7 @@ MTLComb_Train(
   lam_ratio = 0.01,
   lambda = NULL,
   C = 0,
+  C2 = 0,
   ctasks = NULL,
   intercept = F,
   opts = list(init = 0, maxIter = 20, tol = 0.01, ter = 2)
@@ -29,7 +30,9 @@ lam_ratio * lam_max. The default value is 0.01}
 
 \item{lambda}{A positive constant \eqn{\lambda} to control the number of jointly selected features}
 
-\item{C}{A non-negative constant to improve the generalization performance. The default value is 0}
+\item{C}{A non-negative constant to promote the selection of same signatures}
+
+\item{C2}{A non-negative constant to improve the generalization performance. The default value is 0}
 
 \item{ctasks}{The index of the classification tasks. For example \code{ctasks=c(2,3)} refers that 2th and 3th tasks 
 are classification}
@@ -45,4 +48,7 @@ The regularization path
 }
 \description{
 Train a series of MTLComb models indexed by a sequence of lambda
+}
+\author{
+Dr. Han Cao
 }

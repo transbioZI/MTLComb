@@ -20,3 +20,6 @@ The prediction scores of all tasks of \code{type} tasks
 All regression or classification models would be predicted in the single targeting dataset. The prediction scores 
 of all models are returned
 }
+\author{
+Dr. Han Cao
+}

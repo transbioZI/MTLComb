@@ -12,3 +12,6 @@ plot_MTLComb_CV(cvResult)
 \description{
 Plot the CV result for both regression and clasification tasks
 }
+\author{
+Dr. Han Cao
+}

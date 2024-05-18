@@ -12,7 +12,7 @@ Imports: fmsb (>= 0.7.3), pROC (>= 1.18.0)
 Date: 2022-07-08
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no

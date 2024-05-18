@@ -4,7 +4,7 @@
 \alias{solve_L21}
 \title{The solver of MTLComb}
 \usage{
-solve_L21(X, Y, lam, C, ctasks, opts)
+solve_L21(X, Y, lam, C, C2, ctasks, opts)
 }
 \arguments{
 \item{X}{A set of feature matrices (the mixed tasks with classification and regression types)}
@@ -14,7 +14,9 @@ value of binary outcome \eqn{\in\{1, -1\}}}
 
 \item{lam}{A positive constant \eqn{\lambda} to control the number of jointly selected features}
 
-\item{C}{A non-negative constant to improve the generalization performance}
+\item{C}{A non-negative constant to promote the selection of same signatures}
+
+\item{C2}{A non-negative constant to improve the generalization performance}
 
 \item{ctasks}{the index of the classification tasks. For example \code{ctasks=c(2,3)} refered to 2th and 3th tasks 
 are classification}
@@ -27,5 +29,8 @@ maximized number of iterations and the termination rule using this parameter. Fo
 The coefficients of the model and the historical objective values
 }
 \description{
-Solver the objective of MTLComb
+Solve the objective of MTLComb
+}
+\author{
+Dr. Han Cao
 }
