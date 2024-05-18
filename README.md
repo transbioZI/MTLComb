@@ -21,7 +21,6 @@ install_github("transbioZI/MTLComb")
 
 ## Tutorial
 The [Tutorial](https://github.com/transbioZI/MTLComb/blob/main/tests/MTLComb_Tutorial.R) demonstrated all functions of MTLComb regarding to solver, training procedure, cross-validation and prediction procedure.
-This [script](https://github.com/transbioZI/MTLComb/blob/main/tests/MTLComb_codes4paper.R) demonstrate the codes for generating the results of MTLComb paper.
 
 
 
