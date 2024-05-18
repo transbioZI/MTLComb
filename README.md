@@ -2,10 +2,11 @@
 
 
 ## Introduction
-Multi-task learning (MTL) is a machine learning technique for the simultaneously learning of multiple, ‘communicating’ algorithms. The currently available MTL algorithms have been designed for either regression or classification tasks, but no solutions exist that allow for the joint learning of these task types, limiting the utility of MTL with regards to interesting biomedical applications. We developed MTLComb, a novel methodology and software for MTL that can learn regression and classification tasks simultaneously and includes regularization to identify predictors of relevance for all tasks. We provide a mathematical derivation of the algorithm and demonstrate its utility using simulation data.
+Multi-task learning (MTL) is a learning paradigm that enables the simultaneous training of multiple communicating algorithms. Although MTL has been successfully applied to ether regression or classification tasks alone, incorporating mixed types of tasks into a unified MTL framework remains challenging, primarily due to variations in the magnitudes of losses associated with different tasks. This challenge, particularly evident in MTL applications with joint feature selection, often results in biased selections. To overcome this obstacle, we propose a provable loss weighting scheme that analytically determines the optimal weights for balancing regression and classification tasks. This scheme significantly mitigates the otherwise biased feature selection. Building upon this scheme, we introduce MTLComb, an MTL algorithm and software package encompassing optimization procedures, training protocols, and hyperparameter estimation procedures. MTLComb is designed for learning shared predictors among tasks of mixed types. To showcase the efficacy of MTLComb, we conduct tests on both simulated data and biomedical studies pertaining to sepsis and schizophrenia.
 
-We implemented the efficient solver for solving the mixed objective and the training procedure to estimate the regularization path. The cross-validation is implemented to select the lambda 
-
+<p align="center"> 
+<img src="tests/principle.jpg" style="width: 70%; height: 70%"/>​
+</p>
 
 ## Installation
 
